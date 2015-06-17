@@ -1,0 +1,3 @@
+to generate /var/www/html/hav/module/Application/autoload_classmap.php
+cd /var/www/html/hav/module/Application
+php ../../vendor/zendframework/zendframework/bin/classmap_generator.php

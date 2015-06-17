@@ -23,6 +23,9 @@ return array(
         'ZF\\Rpc',
         'ZF\\Versioning',
         'hav',
+        'ZfcBase',
+        'ZfcUser',
+        'Chat'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

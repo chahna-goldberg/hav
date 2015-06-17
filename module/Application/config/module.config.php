@@ -46,5 +46,17 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+        'translator' => [
+        'locale' => 'he_IL',
+        'translation_file_patterns' => [
+            [
+                'type'     => 'gettext',
+                'base_dir' => __DIR__ . '/../language',
+                'pattern'  => '%s.mo',
+            ],
+        ],
+    ],
+
+
     ),
 );

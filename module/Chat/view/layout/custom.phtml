@@ -1,3 +1,12 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: alain
+ * Date: 6/17/15
+ * Time: 9:22 AM
+ */
+?>
+
 <?php echo $this->doctype(); ?>
 <html lang="en">
 <head>
@@ -7,29 +16,30 @@
     echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
     echo $this->headLink(array('rel' => 'icon', 'type' => 'image/png', 'href' => $this->basePath('/img/favicon.png')))
         ->prependStylesheet($this->basePath('/zf-apigility/css/main.min.css'))
-        ->prependStylesheet($this->basePath('/zf-apigility/css/bootstrap.min.css'))
-        ->prependStylesheet('/css/general.css'); //        ->prependStylesheet($this->basePath('/zf-apigility/css/bootstrap.min.css'));
+        ->prependStylesheet('css/chat.css'); //        ->prependStylesheet($this->basePath('/zf-apigility/css/bootstrap.min.css'));
+
     echo $this->headScript()
         ->prependFile($this->basePath('/zf-apigility/js/bootstrap.min.js'))
         ->prependFile($this->basePath('/zf-apigility/js/jquery.min.js'));
     ?>
 </head>
 <body>
-<div class="container">
+<div class="container" >
     <?php echo $this->content; ?>
 </div>
 <footer>
     <hr>
     <div class="container center-block">
-        <a href="/user/logout"><?php echo $this->translate("Sign Out"); ?></a>&nbsp;&nbsp;
-        <a href="/user/change-password"><?php echo $this->translate("New Password"); ?></a>&nbsp;&nbsp;
-        <a href="/user/change-email"><?php echo $this->translate("New Email"); ?></a>&nbsp;&nbsp;
+        <a href="/user/logout"><?php echo $this->translate("Sign Out"); ?></a> &nbsp;&nbsp;
+        <a href="/user/change-password"><?php echo $this->translate("New Password"); ?></a> &nbsp;&nbsp;
+        <a href="/user/change-email"><?php echo $this->translate("New Email"); ?></a> &nbsp;&nbsp;
         <a href="/chat"><?php echo $this->translate("To chat"); ?></a> &nbsp;&nbsp;
-
+        <hr>
         <div class="row">
             <div class="col-sm-6"><p class="pull-left">&copy; Chahna Goldberg 2015 - <?php echo date('Y') ?> by שכנא
                     Ltd.</p></div>
         </div>
+
     </div>
 </footer>
 <?php echo $this->inlineScript() ?>

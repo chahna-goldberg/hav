@@ -1,0 +1,130 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ZfcUser\n"
+"Report-Msgid-Bugs-To: zf-devteam@zend.com\n"
+"POT-Creation-Date: 2014-04-11 21:41+0100\n"
+"PO-Revision-Date: 2015-06-17 08:51+0200\n"
+"Last-Translator: Chahna Goldberg <chahna@gmail.com>\n"
+"Language-Team: ZF Contibutors <zf-devteam@zend.com>\n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: language/msgIds.php:6
+msgid "Username"
+msgstr "שם משתמש"
+
+#: language/msgIds.php:7
+msgid "Email"
+msgstr "כתובת דואר אלקטרוני"
+
+#: language/msgIds.php:8
+msgid "New Email"
+msgstr "דואר אלקטרוני חדש"
+
+#: language/msgIds.php:9
+msgid "Verify New Email"
+msgstr "בדיקת דואר אלקטרוני חדש"
+
+#: language/msgIds.php:10
+msgid "Display Name"
+msgstr "שם כינוי"
+
+#: language/msgIds.php:11
+msgid "Password"
+msgstr "סיסמה"
+
+#: language/msgIds.php:12
+msgid "Password Verify"
+msgstr "בדיקת סיסמה"
+
+#: language/msgIds.php:13
+msgid "Current Password"
+msgstr "סיסמה נוכחית"
+
+#: language/msgIds.php:14
+msgid "Verify New Password"
+msgstr "בדיקת סיסמה חדשה"
+
+#: language/msgIds.php:15
+msgid "New Password"
+msgstr " סיסמה חדשה"
+
+#: language/msgIds.php:16
+msgid "Please type the following text"
+msgstr "נא הקלד את המלל הזה"
+
+#: language/msgIds.php:17
+msgid "Submit"
+msgstr "שגר"
+
+#: language/msgIds.php:18 view/zfc-user/user/login.phtml:1
+msgid "Sign In"
+msgstr "התחברות למערכת"
+
+#: language/msgIds.php:19 view/zfc-user/user/register.phtml:1
+msgid "Register"
+msgstr "הרשמה"
+
+#: language/msgIds.php:20
+msgid "No record matching the input was found"
+msgstr "לא נמצאה התאמה עם מה שהוזן"
+
+#: language/msgIds.php:21
+msgid "A record matching the input was found"
+msgstr "נמצאה רשומה תואמת"
+
+#: language/msgIds.php:22
+msgid "Authentication failed. Please try again."
+msgstr "זהוי המשתמש נכשל, אנא נסה שוב."
+
+#: view/zfc-user/user/changeemail.phtml:1
+#, php-format
+msgid "Change Email for %s"
+msgstr "החלף דואר אלקטרוני עבור %s"
+
+#: view/zfc-user/user/changeemail.phtml:3
+msgid "Email address changed successfully."
+msgstr "הדואל הוחלף בהצלחה"
+
+#: view/zfc-user/user/changeemail.phtml:5
+msgid "Unable to update your email address. Please try again."
+msgstr "עדכון דואר אלקטרוני נכשל, אנא נסה שוב."
+
+#: view/zfc-user/user/changepassword.phtml:1
+#, php-format
+msgid "Change Password for %s"
+msgstr "החלף סיסמה עבור %s"
+
+#: view/zfc-user/user/changepassword.phtml:3
+msgid "Password changed successfully."
+msgstr "הסיסמה הוחלפה בהצלחה!"
+
+#: view/zfc-user/user/changepassword.phtml:5
+msgid "Unable to update your password. Please try again."
+msgstr "עדכון הסיסמה נכשל, אנא נסה שוב"
+
+#: view/zfc-user/user/index.phtml:2
+msgid "Hello"
+msgstr "שלום"
+
+#: view/zfc-user/user/index.phtml:3
+msgid "Sign Out"
+msgstr "התנתק מהמערכת"
+
+#: view/zfc-user/user/login.phtml:31
+msgid "Not registered?"
+msgstr "אינך רשום?"
+
+#: view/zfc-user/user/login.phtml:31
+msgid "Sign up!"
+msgstr "הרשם !"
+
+#: view/zfc-user/user/register.phtml:5
+msgid "Registration is disabled"
+msgstr "אין כרגע אפשרות להרשם"

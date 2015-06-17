@@ -1,0 +1,15 @@
+body {
+    padding-right: 11em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: saddlebrown;
+    text-align: -webkit-right;
+    background-color: #dddddd;
+}
+body.h3 {
+    padding-right: 11em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: saddlebrown;
+    text-align: -webkit-right;
+    background-color: #dddddd;
+}
+
