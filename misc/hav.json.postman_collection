@@ -1,0 +1,193 @@
+{
+	"id": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+	"name": "hav",
+	"description": "",
+	"order": [
+		"6119c560-29f6-8201-2df9-fac2d8015b6a",
+		"ab95a653-58de-1126-dac7-70390aae49a4",
+		"1a58717b-6c19-67f6-0d71-c92862e28073",
+		"bc15baf2-b3ba-495a-521e-91125853cd93",
+		"a703b35b-210c-ac80-2817-b357e4690c74"
+	],
+	"folders": [],
+	"timestamp": 1434029731605,
+	"owner": "",
+	"remoteLink": "",
+	"public": false,
+	"createdAt": null,
+	"updatedAt": null,
+	"synced": false,
+	"requests": [
+		{
+			"id": "1a58717b-6c19-67f6-0d71-c92862e28073",
+			"headers": "Cookie: XDEBUG_SESSION=netbeans-xdebug\n",
+			"url": "http://www.hav.com/signalling",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+			"data": [
+				{
+					"key": "newPassword",
+					"value": "2bin10se",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "k5CM4vbbV4UJDGmq6GNUlahW48qx6rIp",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "get signalling server",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1434029902038,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "6119c560-29f6-8201-2df9-fac2d8015b6a",
+			"headers": "Cookie: XDEBUG_SESSION=netbeans-xdebug\n",
+			"url": "http://www.hav.com/online-users",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "newPassword",
+					"value": "2bin10se",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "k5CM4vbbV4UJDGmq6GNUlahW48qx6rIp",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1434029783370,
+			"name": "get online users list",
+			"description": "",
+			"collectionId": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+			"responses": [],
+			"synced": false
+		},
+		{
+			"id": "a703b35b-210c-ac80-2817-b357e4690c74",
+			"headers": "Cookie: XDEBUG_SESSION=netbeans-xdebug\n",
+			"url": "http://www.hav.com/online-users/22",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "DELETE",
+			"collectionId": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+			"data": [],
+			"dataMode": "raw",
+			"name": "delete one user",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1434545186697,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false,
+			"rawModeData": ""
+		},
+		{
+			"id": "ab95a653-58de-1126-dac7-70390aae49a4",
+			"headers": "Cookie: XDEBUG_SESSION=netbeans-xdebug\n",
+			"url": "http://www.hav.com/online-users/4455",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+			"data": [
+				{
+					"key": "newPassword",
+					"value": "2bin10se",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "k5CM4vbbV4UJDGmq6GNUlahW48qx6rIp",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "get one online user",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1434029773234,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionOwner": 0,
+			"synced": false
+		},
+		{
+			"id": "bc15baf2-b3ba-495a-521e-91125853cd93",
+			"headers": "Cookie: XDEBUG_SESSION=netbeans-xdebug\n",
+			"url": "http://www.hav.com/online-users",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "id",
+					"value": "22",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nick",
+					"value": "nickname",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "alain",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "alain@google.com",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1434544857893,
+			"name": "add  online user",
+			"description": "",
+			"collectionId": "d99007f2-d1d7-f691-d208-b3451f6ec696",
+			"responses": [],
+			"synced": false
+		}
+	]
+}
