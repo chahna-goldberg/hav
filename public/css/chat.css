@@ -1,7 +1,7 @@
 body {
     padding-left: 11em;
     font-family: Georgia, "Times New Roman", Times, serif;
-    color: saddlebrown;
+    color: #41200e;
     text-align: -webkit-right;
     background-color: #dddddd;
 }
@@ -27,6 +27,24 @@ ul.navbar li {
     padding: 0.3em;
     border-right: 1em solid black
 }
+
+#myself {
+    font-family:monospace;
+    background: #08173e;
+    color: #f2beff;
+    margin: 0.5em 0;
+    padding: 0.3em;
+    border-right: 1em solid black
+}
+
+#others {
+    font-family:monospace;
+    background: #08173e;
+     color: #5dfdff;
+     margin: 0.5em 0;
+     padding: 0.3em;
+     border-right: 1em solid black
+ }
 
 ul.navbar a {
     text-decoration: none

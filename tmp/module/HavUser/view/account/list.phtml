@@ -1,0 +1,50 @@
+<?php
+// Set the page title
+$this->headTitle('Accounts List');
+$addUrl = $this->url('account_add');
+?>
+
+<h1>Accounts list</h1>
+<p><a href="<?php echo $addUrl; ?>" class="button">Create new account</a></p>
+<br>
+
+<?php
+foreach ($this->messages as $message) {
+    echo "<p>{$message}</p>\n";
+}
+?>
+
+<table class="data_tables">
+<?php
+// Set the table headers
+echo <<<snip
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th data-filter-type='input'>Name</th>
+            <th data-filter-type='input'>Total Groups</th>
+            <th data-filter-type='input'>Students in Groups</th>
+            <th data-filter-type='input'>Unassociated Students</th>
+        </tr>
+    </thead>
+
+snip;
+
+/* @var $account \BrainpopUser\Entity\Account */
+foreach ($this->accounts as $account) {
+    $view_url = $this->url('account_view', array('account_id'=>$account->account_id));
+
+    echo <<<snip
+        <tr>
+            <td><a href="{$view_url}">{$account->account_id}</a></td>
+            <td><a href="{$view_url}">{$account->account_name}</a></td>
+            <td>{$account->total_groups} of {$account->max_groups}</td>
+            <td>{$account->associated_students}</td>
+            <td>{$account->unassociated_students}</td>
+        </tr>
+
+snip;
+}
+
+?>
+</table>

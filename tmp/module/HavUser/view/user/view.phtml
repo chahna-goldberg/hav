@@ -1,0 +1,48 @@
+<?php
+/* @var $user \BrainpopUser\Entity\User */
+/* @var $account \BrainpopUser\Entity\Account */
+
+$this->headTitle("View {$user->getName()->getFullName()} details");
+$this->headStyle()->appendStyle('label { min-width: 100px; }');
+
+$delete_user_url    = $this->url('user_delete', array('id'=>$user->getId()));
+$view_account_url   = $this->url('account_view', array('account_id'=>$account->getId()));
+?>
+
+<section>
+    <h1>User: <?php echo "{$user->getName()->getFullName()}"; ?>&nbsp;
+        <a href="<?php echo $delete_user_url; ?>" class="confirm" data-confirm-message='Are you sure you want to delete the user <?php echo $user->getName()->getFullName(); ?>?'><img src="/images/trash_white.png" alt='delete user'></a>
+    </h1>
+    <h3>Account: <a href="<?php echo $view_account_url; ?>"><?php echo $account->getName(); ?></a></h3>
+</section>
+
+<section class='light first last'>
+    <?php
+    if ($this->flashMessenger()->hasMessages()) {
+        echo $this->htmlList($this->flashMessenger()->getMessages(), false, array('class'=>'message'));
+    }
+
+    $form->setAttributes( array('action'=>$this->url('user_update'), 'method'=>'post', 'name'=>'Update_user'));
+    $this->formElementErrors()->setAttributes(array('class'=>'error'));
+    echo $this->form()->openTag($form);
+    ?>
+
+        <?php echo $this->formElementErrors($form->get('username')); ?>
+        <p><?php echo $this->formLabel($form->get('username')); ?><?php echo $this->formInput($form->get('username')); ?></p>
+        <?php echo $this->formElementErrors($form->get('password')); ?>
+        <p><?php echo $this->formLabel($form->get('password')); ?><?php echo $this->formInput($form->get('password')); ?></p>
+        <?php echo $this->formElementErrors($form->get('email')); ?>
+        <p><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formInput($form->get('email')); ?></p>
+        <?php echo $this->formElementErrors($form->get('firstName')); ?>
+        <p><?php echo $this->formLabel($form->get('firstName')); ?><?php echo $this->formInput($form->get('firstName')); ?></p>
+        <?php echo $this->formElementErrors($form->get('lastName')); ?>
+        <p><?php echo $this->formLabel($form->get('lastName')); ?><?php echo $this->formInput($form->get('lastName')); ?></p>
+        <?php echo $this->formElementErrors($form->get('role')); ?>
+        <p><?php echo $this->formLabel($form->get('role')); ?>
+            <?php echo $this->formSelect($form->get('role')); ?></p>
+        <p><?php echo $this->formInput($form->get('update')); ?></p>
+    <?php
+    echo $this->formInput($form->get('id'));
+    echo $this->form()->closeTag();
+    ?>
+</section>

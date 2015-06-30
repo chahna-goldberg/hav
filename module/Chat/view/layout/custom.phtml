@@ -8,7 +8,7 @@
 ?>
 
 <?php echo $this->doctype(); ?>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
     <meta charset="utf-8">
     <?php
@@ -20,8 +20,12 @@
 
     echo $this->headScript()
         ->prependFile($this->basePath('/zf-apigility/js/bootstrap.min.js'))
+        ->prependFile('https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
+        ->prependFile('js/getChatters.js')
         ->prependFile($this->basePath('/zf-apigility/js/jquery.min.js'));
     ?>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="container" >

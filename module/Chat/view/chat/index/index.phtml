@@ -7,14 +7,25 @@
  */
 use ZfcUser\View\Helper\ZfcUserIdentity;
 ?>
-
-ID: <?php echo $this->zfcUserIdentity()->getId(); ?>&nbsp;&nbsp;
-Nick: <?php echo $this->zfcUserIdentity()->getDisplayname(); ?>&nbsp;&nbsp;
-Email: <?php echo $this->zfcUserIdentity()->getEmail() ?>&nbsp;&nbsp;
-Username: <?php echo $this->zfcUserIdentity()->getUsername(); ?>&nbsp;&nbsp;
-
-<br><br><br><br><br><br>
-שלום <?php echo $this->zfcUserIdentity()->getDisplayname(); ?> !<br><br>
-
+שלום <?php echo $this->zfcUserIdentity()->getDisplayname(); ?> !<br>
+<div ng:controller="getChatters">
+    <span ng-init="myself.id='<?php echo $this->zfcUserIdentity()->getId() ?>'"></span>
+    <span ng-init="myself.nick='<?php echo $this->zfcUserIdentity()->getDisplayname() ?>'"></span>
+    <span ng-init="myself.email='<?php echo $this->zfcUserIdentity()->getEmail() ?>'"></span>
+    <span ng-init="myself.username='<?php echo $this->zfcUserIdentity()->getUsername() ?>'"></span>
+    <span id="myself">
+        ID: {{ myself.id }}  Username: {{ myself.username }} Nick: {{myself.nick}} Email: {{myself.email}}
+    </span>
+</div>
 ברוך הבא לדף הלימוד
 <BR><HR>
+רשימת חברים מחוברים<br>
+<ul ng:controller="getChatters">
+    <span ng-init="myself.id='<?php echo $this->zfcUserIdentity()->getId() ?>'"></span>
+    <span ng-init="myself.nick='<?php echo $this->zfcUserIdentity()->getDisplayname() ?>'"></span>
+    <span ng-init="myself.email='<?php echo $this->zfcUserIdentity()->getEmail() ?>'"></span>
+    <span ng-init="myself.username='<?php echo $this->zfcUserIdentity()->getUsername() ?>'"></span>
+    <li ng:repeat="user in users">
+        <span id="others"> ID: {{ user.id }} Username: {{ user.username }} Nick: {{user.nick}} Email: {{user.email}}</span>
+    </li>
+</ul>

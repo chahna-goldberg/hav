@@ -18,7 +18,15 @@ class OnlineUsersResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return new ApiProblem(405, 'The POST method has not been defined');
+        $users = unserialize(file_get_contents('onlineUsers.bin'));
+        $newuser["id"] = $data->id;
+        $newuser["username"] = $data->username;
+        $newuser["nick"] = $data->nick;
+        $newuser["email"] = $data->email;
+        $users[$data->id] = $newuser;
+        file_put_contents('onlineUsers.bin', serialize($users));
+//        return new ApiProblem(405, 'The POST method has not been defined');
+        return $newuser;
     }
 
     /**
@@ -29,7 +37,10 @@ class OnlineUsersResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        $users = unserialize(file_get_contents('onlineUsers.bin'));
+        unset($users[$id]);
+        file_put_contents('onlineUsers.bin', serialize($users));
+        return true;
     }
 
     /**
@@ -52,6 +63,7 @@ class OnlineUsersResource extends AbstractResourceListener
     public function fetch($id)
     {
         $users = unserialize(file_get_contents('onlineUsers.bin'));
+        // could be replaced to inarray but it's gone change anyway.
         foreach($users as $user){
             if($user['id']==$id){
                 return $user;

@@ -136,4 +136,72 @@ return array(
             ),
         ),
     ),
+    'zf-content-validation' => array(
+        'hav\\V1\\Rest\\OnlineUsers\\Controller' => array(
+            'input_filter' => 'hav\\V1\\Rest\\OnlineUsers\\Validator',
+        ),
+    ),
+    'input_filter_specs' => array(
+        'hav\\V1\\Rest\\OnlineUsers\\Validator' => array(
+            0 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\I18n\\Validator\\IsInt',
+                        'options' => array(),
+                    ),
+                ),
+                'filters' => array(),
+                'name' => 'id',
+                'description' => 'User Id',
+            ),
+            1 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'nick',
+            ),
+            2 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'username',
+            ),
+            3 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\EmailAddress',
+                        'options' => array(),
+                    ),
+                ),
+                'filters' => array(),
+                'name' => 'email',
+            ),
+        ),
+    ),
 );

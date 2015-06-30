@@ -1,0 +1,38 @@
+<?php
+// Set the page title
+$this->headTitle('Add User');
+
+$css = "label { min-width: 100px; }";
+$this->headStyle()->appendStyle($css);
+?>
+
+<h1>Add User</h1>
+
+<?php
+foreach ($messages as $message) {
+    echo "<p>{$message}</p>\n";
+}
+?>
+
+<section class='light first last'>
+<?php
+$add_user_form->setAttributes( array('action'=>$this->url('user_add_process'), 'method'=>'post'));
+echo $this->form()->openTag($add_user_form);
+?>
+
+    <?php echo $this->formElementErrors($add_user_form->get('username')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('username')); ?><?php echo $this->formInput($add_user_form->get('username')); ?></p>
+    <?php echo $this->formElementErrors($add_user_form->get('password')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('password')); ?><?php echo $this->formInput($add_user_form->get('password')); ?></p>
+    <?php echo $this->formElementErrors($add_user_form->get('email')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('email')); ?><?php echo $this->formInput($add_user_form->get('email')); ?></p>
+    <?php echo $this->formElementErrors($add_user_form->get('fname')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('fname')); ?><?php echo $this->formInput($add_user_form->get('fname')); ?></p>
+    <?php echo $this->formElementErrors($add_user_form->get('lname')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('lname')); ?><?php echo $this->formInput($add_user_form->get('lname')); ?></p>
+    <?php echo $this->formElementErrors($add_user_form->get('role')); ?>
+    <p><?php echo $this->formLabel($add_user_form->get('role')); ?>
+        <?php echo $this->formSelect($add_user_form->get('role')); ?></p>
+    <p><?php echo $this->formInput($add_user_form->get('add')); ?></p>
+<?php echo $this->form()->closeTag(); ?>
+</section>

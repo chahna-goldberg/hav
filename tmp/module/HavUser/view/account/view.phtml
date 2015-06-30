@@ -1,0 +1,111 @@
+<?php
+/* @var $account \BrainpopUser\Entity\Account */
+
+$this->headTitle("View {$account->getName()} details");
+
+$css = "label { min-width: 100px; }";
+$this->headStyle()->appendStyle($css);
+
+$deleteUrl = $this->url('account_delete', array('account_id'=>$account->getId()));
+$cleanUrl  = $this->url('account_clean', array('account_id'=>$account->getId()));
+?>
+
+<h1>View <?php echo "{$account->getName()} account"; ?></h1>
+<p>
+    <a href="<?php echo $cleanUrl; ?>" class="button confirm" data-confirm-message="Are you sure you want to delete associated works?">Delete associated works</a>
+    <a href="<?php echo $deleteUrl; ?>" class="button confirm" data-confirm-message="Are you sure you want to delete the account?">Delete account</a>
+</p>
+
+<section class='light first last'>
+<?php
+if ($this->flashMessenger()->hasMessages()) {
+    echo $this->htmlList($this->flashMessenger()->getMessages(), false, array('class'=>'message'));
+}
+
+$form->setAttributes( array('action'=>$this->url('account_update'), 'method'=>'post', 'name'=>'acount_update'));
+$this->formElementErrors()->setAttributes(array('class'=>'error'));
+
+echo $this->form()->openTag($form);
+?>
+
+    <?php echo $this->formElementErrors($form->get('name')); ?>
+    <p><?php echo $this->formLabel($form->get('name')); ?><?php echo $this->formInput($form->get('name')); ?></p>
+    <?php echo $this->formElementErrors($form->get('email')); ?>
+    <p><?php echo $this->formLabel($form->get('email')); ?><?php echo $this->formInput($form->get('email')); ?></p>
+    <?php echo $this->formElementErrors($form->get('max_users')); ?>
+    <p><?php echo $this->formLabel($form->get('max_users')); ?><?php echo $this->formInput($form->get('max_users')); ?></p>
+    <?php echo $this->formElementErrors($form->get('max_groups')); ?>
+    <p><?php echo $this->formLabel($form->get('max_groups')); ?><?php echo $this->formInput($form->get('max_groups')); ?></p>
+    <?php echo $this->formElementErrors($form->get('status')); ?>
+    <p><?php echo $this->formLabel($form->get('status')); ?>
+        <?php echo $this->formSelect($form->get('status')); ?></p>
+    <p><?php echo $this->formInput($form->get('update')); ?></p>
+<?php
+echo $this->formInput($form->get('id'));
+echo $this->form()->closeTag();
+?>
+</section>
+
+<section class='light first last'>
+    <h2>Add New Group</h2>
+    <?php
+    /* @var $groupForm \BrainpopUser\Form\GroupForm */
+    $groupForm->setAttributes( array('action'=>$this->url('group_add'), 'method'=>'post', 'name'=>'group_add'));
+    echo $this->form()->openTag($groupForm);
+    if ($groupForm->getMessages()) {
+        echo $this->partial('partial/listFormErrors', array('form' => $groupForm));
+    }
+    ?>
+    <p>
+        <?php echo $this->formInput($groupForm->get('name')); ?>&nbsp;
+        <?php echo $this->formInput($groupForm->get('invites_bank')); ?>&nbsp;
+        <?php echo $this->formInput($groupForm->get('add')); ?>
+    </p>
+    <?php echo $this->formInput($groupForm->get('account_id')->setValue($account->getId())); ?>
+    <?php echo $this->form()->closeTag(); ?>
+
+</section>
+
+<section class='first last'>
+    <h2>Groups</h2>
+    <?php
+    if ($this->groups->count()) {
+        echo $this->partial('brainpop-user/group/list', array('groups' => $this->groups));
+    }
+    ?>
+</section>
+
+<section class='light first last'>
+    <h2>Add New User</h2>
+    <?php
+    /* @var $userForm \BrainpopUser\Form\UserForm */
+    $userForm->setAttributes( array('action'=>$this->url('user_add'), 'method'=>'post', 'name'=>'add_user'));
+    echo $this->form()->openTag($userForm);
+    if ($userForm->getMessages()) {
+        echo $this->partial('partial/listFormErrors', array('form' => $userForm));
+    }
+    ?>
+    <p>
+        <?php echo $this->formInput($userForm->get('username')); ?>&nbsp;
+        <?php echo $this->formInput($userForm->get('password')); ?>&nbsp;
+        <?php echo $this->formInput($userForm->get('email')); ?>&nbsp;
+        <?php echo $this->formSelect($userForm->get('role')); ?>&nbsp;
+        <?php echo $this->formInput($userForm->get('add')); ?>
+    </p>
+    <p>
+    <?php echo $this->formInput($userForm->get('firstName')); ?>&nbsp;
+    <?php echo $this->formInput($userForm->get('lastName')); ?>&nbsp;
+    <?php echo $this->formInput($userForm->get('accountId')->setValue($account->getId())); ?>
+    <?php echo $this->form()->closeTag(); ?>
+    </p>
+
+</section>
+
+<section class='first last'>
+    <h2>Users</h2>
+    <?php
+    if ($this->users->count()) {
+        echo $this->partial('brainpop-user/user/list', array('users' => $this->users));
+    }
+    ?>
+</section>

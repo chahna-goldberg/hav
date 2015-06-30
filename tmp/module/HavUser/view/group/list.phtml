@@ -1,0 +1,40 @@
+<table class="data_tables">
+    <?php
+    // Set the table headers
+    echo <<<snip
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th data-filter-type='input'>Serial</th>
+                <th data-filter-type='input'>Name</th>
+                <th data-filter-type='select'>Teacher</th>
+                <th data-filter-type='input'>Total students</th>
+                <th data-filter-type='select'>Invites bank</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+snip;
+
+    foreach ($this->groups as $group) :
+        $view_url   = $this->url('group_view', array('group_id'=>$group->id));
+        $delete_url = $this->url('group_delete', array('group_id'=>$group->id));
+        $teacher    = ($group->teacher) ? $group->teacher : 'None';
+        $teachers   = ($group->total_teacher > 1) ? '*' : null;
+        echo <<<snip
+            <tr>
+                <td>{$group->id}</td>
+                <td>{$group->serial}</td>
+                <td><a href="{$view_url}">{$group->name}</a></td>
+                <td>{$teacher}{$teachers}</td>
+                <td>{$group->total_students}</td>
+                <td>{$group->invites_bank}</td>
+                <td>
+                    <a href="{$delete_url}" class="button confirm" data-confirm-message="Are you sure you want to delete the group {$group->name}?">Delete</a>
+                </td>
+            </tr>
+
+snip;
+    endforeach;
+    ?>
+</table>

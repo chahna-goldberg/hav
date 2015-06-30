@@ -1,0 +1,34 @@
+<?php
+// Set the page title
+$this->headTitle('User Login');
+
+$css = "label { min-width: 100px; }";
+$this->headStyle()->appendStyle($css);
+?>
+
+<h1>Login</h1>
+
+<section class="light first last">
+<?php
+foreach ($this->messages as $message) {
+    echo "<p>{$message}</p>\n";
+}
+
+$login_form->setAttribute('action', $this->url('user_login_process'));
+$login_form->setAttribute('method', 'post');
+
+echo $this->form()->openTag($login_form);
+?>
+
+    <?php echo $this->formElementErrors($login_form->get('account_id')); ?>
+    <p><?php echo $this->formLabel($login_form->get('account_id')); ?><?php echo $this->formInput($login_form->get('account_id')); ?></p>
+
+    <?php echo $this->formElementErrors($login_form->get('username'), array('style'=>'color: red')); ?>
+    <p><?php echo $this->formLabel($login_form->get('username')); ?><?php echo $this->formInput($login_form->get('username')->setAttributes(array('style'=>'border: solid 1px'))); ?></p>
+    
+    <?php echo $this->formElementErrors($login_form->get('password')); ?>
+    <p><?php echo $this->formLabel($login_form->get('password')); ?><?php echo $this->formInput($login_form->get('password')->setValue(null)); ?></p>
+    <p><?php echo $this->formInput($login_form->get('Send')); ?></p>
+
+<?php echo $this->form()->closeTag(); ?>
+</section>

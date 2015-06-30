@@ -1,0 +1,178 @@
+<script>
+    //<![CDATA[
+    var opts = {
+        "bFilter"       : true,
+        "bSort"         : true,
+        "bPaginate"     : false,
+        "bLengthChange" : false,
+        "bInfo"         : false,
+        "bStateSave"    : false,
+        "bSortClasses"  : false,
+        "bSortCellsTop" : true,
+        "aaSorting"     : [],
+        "bAutoWidth"    : false,
+        "sDom"          : '<"table_cotrol"fT>t',
+        "oTableTools"   : {
+            "sSwfPath"  : "/js/dataTables/copy_csv_xls.swf",
+            "aButtons"  : [ "copy", "csv" ]
+        },
+        "oLanguage"     : { "sSearch": "Global Search:" }
+    };
+
+    $(document).ready(function() {
+        var unassociatedUsers = $('#unassociated').DataTable( opts );
+        var associatedUsers = $('#associated').DataTable( opts );
+
+        $('#add_to_group').on('click', function(){
+            $(this).attr('disabled', 'disabled');
+            var selectedRows        = unassociatedUsers.rows('.selected');
+            var selectedUsersIds    = unassociatedUsers.cells('.selected > td:first-child').data().toArray();
+            subscribeUsers(<?php echo $this->accountId; ?>, <?php echo $this->groupId; ?>, selectedUsersIds);
+            associatedUsers.rows.add(selectedRows.data()).draw();
+            selectedRows.remove().draw();
+        });
+
+        $('#remove_from_group').on('click', function(){
+            $(this).attr('disabled', 'disabled');
+            var selectedRows        = associatedUsers.rows('.selected');
+            var selectedUsersIds    = associatedUsers.cells('.selected > td:first-child').data().toArray();
+            unsubscribeUsers(<?php echo $this->accountId; ?>, <?php echo $this->groupId; ?>, selectedUsersIds);
+            unassociatedUsers.rows.add(selectedRows.data()).draw();
+            selectedRows.remove().draw();
+        });
+
+        unassociatedUsers.on( 'click', 'tr', function () {
+            $(this).toggleClass('selected');
+            if ($('#unassociated tr.selected').length) {
+                $('#add_to_group').removeAttr('disabled');
+            }
+            else {
+                $('#add_to_group').attr('disabled', 'disabled');
+            }
+        });
+
+        associatedUsers.on( 'click', 'tr', function () {
+            $(this).toggleClass('selected');
+            if ($('#associated tr.selected').length) {
+                $('#remove_from_group').removeAttr('disabled');
+            }
+            else {
+                $('#remove_from_group').attr('disabled', 'disabled');
+            }
+        });
+
+    });
+
+/**
+ * AJAX request to subscribe users to a group
+ * @param {int} accountId
+ * @param {int} groupId
+ * @param {int} usersId
+ * @returns {Boolean}
+ */
+function subscribeUsers(accountId, groupId, usersIds){
+
+    var data = {
+        account_id    : accountId,
+        group_id      : groupId,
+        users_ids     : usersIds
+    };
+    $.post('/api/group/subscribe/users', data, function(result) {
+
+        if ( result.success ) {
+            console.log('Success');
+        } else {
+            console.log('Fail');
+        }
+    });
+};
+
+/**
+ * AJAX request to unsubscribe users from a group
+ * @param {int} accountId
+ * @param {int} groupId
+ * @param {int} usersId
+ * @returns {Boolean}
+ */
+function unsubscribeUsers(accountId, groupId, usersIds){
+
+    var data = {
+        account_id    : accountId,
+        group_id      : groupId,
+        users_ids     : usersIds
+    };
+    $.post('/api/group/unsubscribe/users', data, function(result) {
+
+        if ( result.success ) {
+            console.log('Success');
+        } else {
+            console.log('Fail');
+        }
+    });
+};
+
+//]]>
+</script>
+
+<div class="row users_group_association">
+    <div class="col-4">
+        <table id="unassociated">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($this->users as $user) {
+                if ($user->is_associated) {
+                    continue;
+                }
+                echo "<tr>\n";
+                    echo "<td>{$user->user_id}</td>";
+                    echo "<td>{$user->username}</td>";
+                    echo "<td>{$user->name}</td>";
+                    echo "<td>{$user->role}</td>";
+                echo "</tr>\n";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-2" style="text-align: center; padding-top: 50px;">
+        <p><button id="add_to_group" type="button" disabled="disable">Add to group &rightarrow;</button></p>
+        <p><button id="remove_from_group" type="button" disabled="disable">&leftarrow; Remove from group</button></p>
+    </div>
+
+    <div class="col-4">
+        <table id="associated">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($this->users as $user) {
+                if (!$user->is_associated) {
+                    continue;
+                }
+                echo "<tr>\n";
+                echo "<td>{$user->user_id}</td>";
+                echo "<td>{$user->username}</td>";
+                echo "<td>{$user->name}</td>";
+                echo "<td>{$user->role}</td>";
+                echo "</tr>\n";
+            }
+            ?>
+            </tbody>
+        </table>
+    </div>
+</div>

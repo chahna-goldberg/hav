@@ -1,0 +1,35 @@
+<table class="data_tables">
+    <?php
+    // Set the table headers
+    echo <<<snip
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th data-filter-type='select'>Role</th>
+                <th data-filter-type='input'>Username</th>
+                <th data-filter-type='input'>Name</th>
+                <th data-filter-type='select'>In group</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+snip;
+
+    foreach ($this->users as $user) :
+        $view_url       = $this->url('user_view', array('id'=>$user->user_id));
+        $inGroup        = ($user->in_group) ? 'Yes' : 'No';
+        $updatePassUrl  = $this->url('user_update_password', array('id'=>$user['user_id']));
+        echo <<<snip
+            <tr>
+                <td><a href="{$view_url}">{$user->user_id}</a></td>
+                <td>{$user->role}</td>
+                <td><a href="{$view_url}">{$user->username}</a></td>
+                <td>{$user->name}</td>
+                <td>{$inGroup}</td>
+                <td><a href="{$updatePassUrl}" class='button fancybox_iframe' data-fancybox-width="400" data-fancybox-height="200">Password</a></td>
+            </tr>
+
+snip;
+    endforeach;
+    ?>
+</table>
